@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+import os
+import sys
+import rospkg
+import rospy
+from std_msgs.msg import String
+from sensor_msgs.msg import Image
+from detecting_hand.msg import bounding_box_calculated_center
+
+
+
+def callback(data):
+	rospy.loginfo("I heard")
+   
+def listener():
+	rospy.init_node('listener', anonymous=True)
+	rospy.Subscriber('hand_bounding_box_center', bounding_box_calculated_center, callback)
+	rospy.spin()
+
+if __name__ == '__main__':
+	listener()
